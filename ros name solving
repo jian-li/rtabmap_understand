@@ -1,0 +1,30 @@
+ros名字解析：
+ROS有四种不同类型的图资源名字：base,relative,global和private．有下面的符号：
+base
+relative/name 
+/global/name
+~private/name
+默认情况下，都是相对于节点的名字空间解析的（在ros中图的节点是基本的单元）.
+没有名字空间标识符的名字都是base名字，base名字实际上是相对名字的子集，有同样的解析方法．base名字
+最常用来初始化节点的名字．
+下面是一些例子：
+Node 　　  Relative(default)     Global      Private
+/node1     bar->/bar             /bar->/bar  ~bar->/node/bar
+/wg/node2  bar->/wg/bar          /bar->/bar  ~bar->/wg/node2/bar
+/wg/node3  foo/bar->/wg/foo/bar  /bar->/bar  ~foo/bar->/node/wg3/foo/bar
+
+得到名字空间：
+std::string ns = ros::this_node::getNameSpace();
+ns = rospy.get_namespace();
+http://wiki.ros.org/ROS/Concepts
+
+
+remapping arguments:
+ros名字映射可以传递给任何的节点，使用命令 name:=new_name
+例子：rosrun rospy_tutorials talker chatter:=/wg/chatter
+设置talker节点广播给/wg/chatter而不是chatter.
+
+pushing down:
+改变起动节点的名字空间，重新映射节点所以的名字．
+
+

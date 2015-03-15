@@ -1,0 +1,6 @@
+文件:roslaunch/xml/param
+http://wiki.ros.org/roslaunch
+<remap from="odom" to="pr2_base_odometry/odom" />
+:比如刚开始设计的时候，希望从"odom"话题接收信息，但是在实例中是从"pr2_base_odometry/odom"话题接收数据，可以通过映射将两者对应起来．
+<param name="controller_frequency" value="10.0" />
+
